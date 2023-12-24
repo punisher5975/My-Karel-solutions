@@ -1,0 +1,39 @@
+void addSlow() {
+    decrement();
+    while(frontIsClear()){
+        back();
+        increment();
+        back();
+        decrement();
+    }
+}  
+void increment(){
+    while(onBeeper()){
+        pickBeeper();
+        moveForward();
+    }
+    dropBeeper();
+}
+void decrement(){
+    while(!onBeeper()){
+        dropBeeper();
+        if(frontIsClear()){
+            moveForward();
+        }
+    }
+    pickBeeper(); 
+}
+void back(){
+    turnAround();
+    while(frontIsClear()){
+        moveForward();
+    }if(leftIsClear()){
+        turnLeft();
+        moveForward();
+        turnLeft();
+    }else{
+        turnRight();
+        moveForward();
+        turnRight();
+    }
+}
