@@ -3,20 +3,21 @@ void cleanTheTunnels() {
         if (onBeeper()) {
             turnLeft();
             pickBeeper();
-            if(!beeperAhead()){
+            if (beeperAhead()) {
+                while(beeperAhead()){
+                    moveForward();
+                    pickBeeper();
+                }
+                turnAround();
+                while (frontIsClear()){
+                    moveForward();
+                }
+                turnLeft();
+            }else{
                 turnRight();
             }
-            while(beeperAhead()){
-                moveForward();
-                pickBeeper();
-            }
-            turnAround();
-            while (frontIsClear()){
-                moveForward();
-            }
-            turnLeft()
         }if(frontIsClear()){
             moveForward();
         }
     }
-}
+}  
