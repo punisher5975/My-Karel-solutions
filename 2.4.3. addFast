@@ -1,55 +1,44 @@
 void addFast(){
     repeat(8){
-        if(onBeeper()&&beeperAhead()){//1+1
+        //1+
+        if(onBeeper()){
             moveForward();
-            moveForward();
-            if(onBeeper()){//1+1+1
+            if(onBeeper()&&beeperAhead()){//1+1+1
                 addOne();
-                nextWithCarry();
-            }else{ //1+1+0
-                moveForward();
-                nextWithCarry();
+                carryOne();
+            }else if(!beeperAhead()){//1+1+0
+                addNone();
+                carryOne();
+            }else if(!onBeeper()&&!beeperAhead()){//1+0+0
+                addOne();
+                carryNone();
+            }else{//1+0+1
+                addNone();
+                carryOne();
             }
         }
-        else if(onBeeper()){//1+0
+        else{//0+
             moveForward();
-            moveForward();
-            if(onBeeper()){//1+0+1
-                moveForward();
-                nextWithCarry();
-            }else{//1+0+0
+            if(onBeeper()&&beeperAhead()){//0+1+1
+                addNone();
+                carryOne();
+            }else if(onBeeper()&&!beeperAhead()){//0+1+0
                 addOne();
-                nextWithoutCarry();
-            }
-        }
-        else if(!onBeeper()&&!beeperAhead()){ //0+0
-            moveForward();
-            moveForward();
-            if(onBeeper()){//0+0+1
+                carryNone();
+            }else if(!onBeeper()&&beeperAhead()){//0+0+1
                 addOne();
-                nextWithoutCarry();
+                carryNone();
             }else{//0+0+0
                 addNone();
-                nextWithoutCarry();
+                carryNone();
             }
         }
-        else if(!onBeeper()&&beeperAhead()){//0+1
-            moveForward();
-            moveForward();
-            if(onBeeper()){//0+1+1
-                moveForward();
-                nextWithCarry();
-            }else{//0+1+0
-                addOne();
-                nextWithoutCarry();
-            }
-        } 
         moveForward();
         moveForward();
         turnAround();
     }
-} 
-void nextWithCarry(){
+}
+void carryOne(){
     turnRight();
     moveForward();
     turnRight();
@@ -58,11 +47,16 @@ void nextWithCarry(){
 }
 void addOne(){
     moveForward();
+    moveForward();
     dropBeeper();
 }
-void nextWithoutCarry(){
+void carryNone(){
     turnRight();
     moveForward();
     turnRight();
+    moveForward();
+}
+void addNone(){
+    moveForward();
     moveForward();
 }
