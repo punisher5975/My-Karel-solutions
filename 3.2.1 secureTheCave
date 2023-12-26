@@ -1,0 +1,27 @@
+void secureTheCave(){
+    turnLeft();
+    move();
+    rearangeBeeper();
+    turnRight();
+    if(frontIsClear()){
+        moveForward();
+        secureTheCave();
+    }
+}
+void move(){
+    while(frontIsClear()){
+        moveForward();
+    }
+    turnAround();
+}
+void rearangeBeeper(){
+    if(onBeeper()){
+        pickBeeper();
+        moveForward();
+        rearangeBeeper();
+        dropBeeper();
+        moveForward();
+    }else{
+        move();
+    }
+}
