@@ -1,0 +1,20 @@
+void fetchTheStars(){
+    turnLeft();
+    fetchStar();
+    dropBeeper();
+    turnLeft();
+    if(frontIsClear()){
+        moveForward();
+        fetchTheStars();
+    }
+} 
+void fetchStar(){
+    if(frontIsClear()){
+        moveForward();
+        fetchStar();
+        moveForward();
+    }else{
+        pickBeeper();
+        turnAround();
+    }
+}
