@@ -1,0 +1,32 @@
+void cleanTheRoom(){
+    repeat(4){
+        Clean();
+        Rechts();
+        Clean();
+        Links();      
+    } 
+    Clean();
+    Rechts();
+    Clean();
+}
+void Clean(){
+    if(onBeeper()){
+        pickBeeper();
+    }
+    repeat(9){
+        moveForward();
+        if(onBeeper()){
+            pickBeeper();  
+        }
+    }
+}
+void Links(){
+    turnRight();
+    moveForward();
+    turnRight();
+}
+void Rechts(){
+    turnLeft();
+    moveForward();
+    turnLeft();
+}
