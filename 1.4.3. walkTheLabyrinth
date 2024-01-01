@@ -1,0 +1,11 @@
+void walkTheLabyrinth(){
+    repeat(99){
+        if(leftIsClear()){
+            turnLeft();
+        }
+        else if(rightIsClear()){
+            turnRight();
+        }
+        moveForward();
+    }
+} 
