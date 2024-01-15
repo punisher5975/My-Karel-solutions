@@ -1,0 +1,33 @@
+void harvestTheField()
+{
+    pickBeeper();
+    harvest(); /*Erst Reihe fertig */
+    WechselUD();
+    harvest(); /* Zweite Reihe fertig */ 
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    pickBeeper();
+    harvest(); /* Dritte Reihe fertig */
+    WechselUD();
+    harvest();
+    }
+void harvest()
+{
+    repeat(3){
+        turnRight();
+        moveForward();
+        turnLeft();
+        moveForward();
+        pickBeeper();
+    }
+}
+void WechselUD()
+{
+    moveForward();
+    turnLeft();
+    moveForward();
+    pickBeeper();
+    turnLeft();
+}
